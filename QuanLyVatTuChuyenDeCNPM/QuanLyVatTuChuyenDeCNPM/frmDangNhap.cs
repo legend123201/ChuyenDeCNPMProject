@@ -27,13 +27,17 @@ namespace QuanLyVatTuChuyenDeCNPM
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            string chuoiketnoi = "Data Source=DESKTOP-D1DKRD0\\LUU;Initial Catalog=QLVT_CHUYENDE;Integrated Security=True";
-            Program.conn.ConnectionString = chuoiketnoi;
-            Program.conn.Open();
+            
         }
 
         private void buttonDangNhap_Click(object sender, EventArgs e)
         {
+            if(Program.maNhanVien != "")
+            {
+                MessageBox.Show("Đăng nhập lỗi! Vui lòng đăng xuất trước!", "", MessageBoxButtons.OK);
+                return;
+            }
+
             textEditTaiKhoan.Text = textEditTaiKhoan.Text.Trim();
             textEditMatKhau.Text = textEditMatKhau.Text.Trim();
             if (textEditTaiKhoan.Text == "" || textEditMatKhau.Text == "")
@@ -42,9 +46,9 @@ namespace QuanLyVatTuChuyenDeCNPM
                 return;
             }
 
-            if (Program.KetNoi() == 0) return;
+            if (Program.KetNoi() == 0) return; //trong hàm này đã có báo lỗi
             string sql = "exec[dbo].[SP_DangNhap] " + textEditTaiKhoan.Text + ", '" + textEditMatKhau.Text + "'";
-            Program.myReader = Program.ExecSqlDataReader(sql);
+            Program.myReader = Program.ExecSqlDataReader(sql); 
             if (Program.myReader == null) return;
             Program.myReader.Read();
             string ho = Program.myReader.GetString(0);
@@ -57,15 +61,29 @@ namespace QuanLyVatTuChuyenDeCNPM
             Program.frmChinh.lblTenNhanVien.Text = "Tên nhân viên: " + ho + " " + ten;
             Program.frmChinh.lblChucVu.Text = "Chức vụ: Nhân viên";
 
-           
-            
-            
-          
+            Program.myReader.Close();
+            Program.conn.Close();
+
+            Program.frmChinh.rbpQuanLy.Visible = true;
+            MessageBox.Show("Đăng nhập thành công!", "", MessageBoxButtons.OK);
         }
 
         private void buttonDangXuat_Click(object sender, EventArgs e)
         {
+            if (Program.maNhanVien == "")
+            {
+                MessageBox.Show("Bạn chưa đăng nhập!", "", MessageBoxButtons.OK);
+                return;
+            }
+            Program.maNhanVien = "";
+            Program.matKhau = "";
 
+            Program.frmChinh.lblMaNhanVien.Text = "Mã nhân viên";
+            Program.frmChinh.lblTenNhanVien.Text = "Tên nhân viên";
+            Program.frmChinh.lblChucVu.Text = "Chức vụ";
+
+            Program.frmChinh.rbpQuanLy.Visible = false;
+            MessageBox.Show("Đăng xuất thành công!", "", MessageBoxButtons.OK);
         }
     }
 }

@@ -59,7 +59,7 @@
             // 
             // buttonDangXuat
             // 
-            this.buttonDangXuat.Location = new System.Drawing.Point(89, 219);
+            this.buttonDangXuat.Location = new System.Drawing.Point(318, 220);
             this.buttonDangXuat.Name = "buttonDangXuat";
             this.buttonDangXuat.Size = new System.Drawing.Size(120, 31);
             this.buttonDangXuat.TabIndex = 7;
@@ -69,7 +69,7 @@
             // 
             // buttonDangNhap
             // 
-            this.buttonDangNhap.Location = new System.Drawing.Point(318, 216);
+            this.buttonDangNhap.Location = new System.Drawing.Point(92, 220);
             this.buttonDangNhap.Name = "buttonDangNhap";
             this.buttonDangNhap.Size = new System.Drawing.Size(120, 31);
             this.buttonDangNhap.TabIndex = 6;

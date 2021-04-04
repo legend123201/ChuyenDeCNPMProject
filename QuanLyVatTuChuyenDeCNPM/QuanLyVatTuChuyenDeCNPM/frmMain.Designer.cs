@@ -32,9 +32,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.buttonDangNhap = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonThoat = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonVatTu = new DevExpress.XtraBars.BarButtonItem();
+            this.buttonPhieuHang = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbpQuanLy = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblMaNhanVien = new System.Windows.Forms.ToolStripStatusLabel();
@@ -52,13 +56,16 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.ribbonControl1.SearchEditItem,
             this.buttonDangNhap,
-            this.barButtonItem1});
+            this.buttonThoat,
+            this.buttonVatTu,
+            this.buttonPhieuHang});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ribbonControl1.MaxItemId = 3;
+            this.ribbonControl1.MaxItemId = 5;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
+            this.ribbonPage1,
+            this.rbpQuanLy});
             this.ribbonControl1.Size = new System.Drawing.Size(1086, 193);
             // 
             // buttonDangNhap
@@ -70,13 +77,32 @@
             this.buttonDangNhap.Name = "buttonDangNhap";
             this.buttonDangNhap.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonDangNhap_ItemClick);
             // 
-            // barButtonItem1
+            // buttonThoat
             // 
-            this.barButtonItem1.Caption = "Thoát";
-            this.barButtonItem1.Id = 2;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.buttonThoat.Caption = "Thoát";
+            this.buttonThoat.Id = 2;
+            this.buttonThoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonThoat.ImageOptions.Image")));
+            this.buttonThoat.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonThoat.ImageOptions.LargeImage")));
+            this.buttonThoat.Name = "buttonThoat";
+            this.buttonThoat.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonThoat_ItemClick);
+            // 
+            // buttonVatTu
+            // 
+            this.buttonVatTu.Caption = "Vật tư";
+            this.buttonVatTu.Id = 3;
+            this.buttonVatTu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonVatTu.ImageOptions.Image")));
+            this.buttonVatTu.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonVatTu.ImageOptions.LargeImage")));
+            this.buttonVatTu.Name = "buttonVatTu";
+            this.buttonVatTu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonVatTu_ItemClick);
+            // 
+            // buttonPhieuHang
+            // 
+            this.buttonPhieuHang.Caption = "Phiếu hàng";
+            this.buttonPhieuHang.Id = 4;
+            this.buttonPhieuHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("buttonPhieuHang.ImageOptions.Image")));
+            this.buttonPhieuHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("buttonPhieuHang.ImageOptions.LargeImage")));
+            this.buttonPhieuHang.Name = "buttonPhieuHang";
+            this.buttonPhieuHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.buttonPhieuHang_ItemClick);
             // 
             // ribbonPage1
             // 
@@ -88,8 +114,21 @@
             // ribbonPageGroup1
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.buttonDangNhap);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.buttonThoat);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            // 
+            // rbpQuanLy
+            // 
+            this.rbpQuanLy.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2});
+            this.rbpQuanLy.Name = "rbpQuanLy";
+            this.rbpQuanLy.Text = "Quản lý";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.buttonVatTu);
+            this.ribbonPageGroup2.ItemLinks.Add(this.buttonPhieuHang);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             // 
             // xtraTabbedMdiManager1
             // 
@@ -155,11 +194,15 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem buttonDangNhap;
         private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem buttonThoat;
         private System.Windows.Forms.StatusStrip statusStrip1;
         public System.Windows.Forms.ToolStripStatusLabel lblMaNhanVien;
         public System.Windows.Forms.ToolStripStatusLabel lblTenNhanVien;
         public System.Windows.Forms.ToolStripStatusLabel lblChucVu;
+        private DevExpress.XtraBars.BarButtonItem buttonVatTu;
+        private DevExpress.XtraBars.BarButtonItem buttonPhieuHang;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
+        public DevExpress.XtraBars.Ribbon.RibbonPage rbpQuanLy;
     }
 }
 

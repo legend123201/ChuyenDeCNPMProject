@@ -18,7 +18,7 @@ namespace QuanLyVatTuChuyenDeCNPM
         public static SqlConnection conn = new SqlConnection();
         public static String connstr;
         public static SqlDataReader myReader;
-        public static String servername = "";
+        public static String servername = "DESKTOP-D1DKRD0\\LUU";
         public static String database_login = "sa";
         public static String database_password = "123456";
         public static String maNhanVien = "";
@@ -39,7 +39,7 @@ namespace QuanLyVatTuChuyenDeCNPM
             {
                 //Data Source=DESKTOP-D1DKRD0\LUU;Initial Catalog=QLVT_CHUYENDE;User ID=sa;Password=123456
                 Program.connstr = "Data Source=" + Program.servername + ";Initial Catalog=" +
-                      Program.database + ";User ID= " + database_login + ";password=" + Program.database_password;
+                      Program.database + ";User ID=" + database_login + ";Password=" + Program.database_password;
                 Program.conn.ConnectionString = Program.connstr;
                 Program.conn.Open();
                 return 1;

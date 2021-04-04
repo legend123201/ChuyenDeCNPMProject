@@ -14,6 +14,7 @@ namespace QuanLyVatTuChuyenDeCNPM
         public frmMain()
         {
             InitializeComponent();
+            rbpQuanLy.Visible = false;
         }
         private Form CheckExists(Type ftype)
         {
@@ -36,9 +37,35 @@ namespace QuanLyVatTuChuyenDeCNPM
             }
         }
 
-        public void CapNhatThongTinUser()
+        private void buttonThoat_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            Close();
+        }
 
+        private void buttonPhieuHang_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmLapPhieu));
+            if (frm != null)
+                frm.Activate();
+            else
+            {
+                frmLapPhieu f = new frmLapPhieu();
+                f.MdiParent = this;
+                f.Show();
+            }
+        }
+
+        private void buttonVatTu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Form frm = this.CheckExists(typeof(frmVatTu));
+            if (frm != null)
+                frm.Activate();
+            else
+            {
+                frmVatTu f = new frmVatTu();
+                f.MdiParent = this;
+                f.Show();
+            }
         }
     }
 }
