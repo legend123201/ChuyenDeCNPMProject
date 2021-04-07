@@ -35,6 +35,9 @@ namespace QuanLyVatTuChuyenDeCNPM
             // TODO: This line of code loads data into the 'dS.CT_PhatSinh' table. You can move, or remove it, as needed.
             this.cT_PhatSinhTableAdapter.Connection.ConnectionString = Program.connstr;
             this.cT_PhatSinhTableAdapter.Fill(this.dS.CT_PhatSinh);
+
+            groupBoxVatTu.Enabled = false;
+            buttonGhi.Enabled = buttonHuy.Enabled = false;
         }
 
         private void groupBoxVatTu_Enter(object sender, EventArgs e)
@@ -78,13 +81,13 @@ namespace QuanLyVatTuChuyenDeCNPM
                 int slt = int.Parse(textEditSoLuongTon.Text);
                 if(slt <= 0 || slt > 9999999)
                 {
-                    MessageBox.Show("Số lượng tồn phải là số lớn hơn 0 và nhỏ hơn 9999999!", "Thông báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Số lượng tồn phải là số nguyên lớn hơn 0 và nhỏ hơn 9999999!", "Thông báo", MessageBoxButtons.OK);
                     return;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Số lượng tồn phải là số!\n" + ex.Message, "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Số lượng tồn phải là số nguyên!\n" + ex.Message, "Thông báo", MessageBoxButtons.OK);
                 textEditSoLuongTon.Focus();
                 return;
             }
@@ -128,7 +131,7 @@ namespace QuanLyVatTuChuyenDeCNPM
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Thêm không thành công! Đã có lỗi xảy ra!\n" + ex.Message, "Thông báo", MessageBoxButtons.OK);
+                MessageBox.Show("Thao tác không thành công! Đã có lỗi xảy ra!\n" + ex.Message, "Thông báo", MessageBoxButtons.OK);
             }
 
         }
@@ -164,6 +167,12 @@ namespace QuanLyVatTuChuyenDeCNPM
 
         private void buttonSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (bds_VatTu.Count == 0)
+            {
+                MessageBox.Show("Không có vật tư để sửa!", "THÔNG BÁO", MessageBoxButtons.OK);
+                return;
+            }
+
             isDangSua = true;
 
             textEditMaVT.Enabled = false;
