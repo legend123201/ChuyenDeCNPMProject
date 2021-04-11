@@ -37,8 +37,8 @@
             System.Windows.Forms.Label mAVTLabel;
             System.Windows.Forms.Label sOLUONGLabel;
             System.Windows.Forms.Label dONGIALabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLapPhieu));
             System.Windows.Forms.Label lOAILabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLapPhieu));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
@@ -68,6 +68,7 @@
             this.colMANV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBoxCTPhatSinh = new System.Windows.Forms.GroupBox();
+            this.buttonTimVatTu = new System.Windows.Forms.Button();
             this.textEdit_DonGia_CTPS = new DevExpress.XtraEditors.TextEdit();
             this.bds_CTPhatSinh = new System.Windows.Forms.BindingSource(this.components);
             this.textEdit_SoLuong_CTPS = new DevExpress.XtraEditors.TextEdit();
@@ -80,12 +81,13 @@
             this.colSOLUONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDONGIA = new DevExpress.XtraGrid.Columns.GridColumn();
             this.groupBoxPhatSinh = new System.Windows.Forms.GroupBox();
+            this.cmb_Loai_PS = new System.Windows.Forms.ComboBox();
             this.textEdit_MaNV_PS = new DevExpress.XtraEditors.TextEdit();
             this.textEdit_HoTenKH_PS = new DevExpress.XtraEditors.TextEdit();
             this.dateEdit_Ngay_PS = new DevExpress.XtraEditors.DateEdit();
             this.textEdit_Phieu_PS = new DevExpress.XtraEditors.TextEdit();
             this.cT_PhatSinhTableAdapter = new QuanLyVatTuChuyenDeCNPM.DSTableAdapters.CT_PhatSinhTableAdapter();
-            this.cmb_Loai_PS = new System.Windows.Forms.ComboBox();
+            this.labelBangDangThaoTac = new DevExpress.XtraBars.BarStaticItem();
             pHIEULabel = new System.Windows.Forms.Label();
             nGAYLabel = new System.Windows.Forms.Label();
             hOTENKHLabel = new System.Windows.Forms.Label();
@@ -174,7 +176,7 @@
             // sOLUONGLabel
             // 
             sOLUONGLabel.AutoSize = true;
-            sOLUONGLabel.Location = new System.Drawing.Point(925, 158);
+            sOLUONGLabel.Location = new System.Drawing.Point(1002, 158);
             sOLUONGLabel.Name = "sOLUONGLabel";
             sOLUONGLabel.Size = new System.Drawing.Size(68, 17);
             sOLUONGLabel.TabIndex = 4;
@@ -183,11 +185,20 @@
             // dONGIALabel
             // 
             dONGIALabel.AutoSize = true;
-            dONGIALabel.Location = new System.Drawing.Point(925, 59);
+            dONGIALabel.Location = new System.Drawing.Point(1002, 59);
             dONGIALabel.Name = "dONGIALabel";
             dONGIALabel.Size = new System.Drawing.Size(61, 17);
             dONGIALabel.TabIndex = 6;
             dONGIALabel.Text = "Đơn giá:";
+            // 
+            // lOAILabel
+            // 
+            lOAILabel.AutoSize = true;
+            lOAILabel.Location = new System.Drawing.Point(41, 215);
+            lOAILabel.Name = "lOAILabel";
+            lOAILabel.Size = new System.Drawing.Size(39, 17);
+            lOAILabel.TabIndex = 9;
+            lOAILabel.Text = "Loại:";
             // 
             // barManager1
             // 
@@ -208,9 +219,10 @@
             this.buttonHuy,
             this.buttonGhi,
             this.barButtonItem1,
-            this.buttonRefresh});
+            this.buttonRefresh,
+            this.labelBangDangThaoTac});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 8;
+            this.barManager1.MaxItemId = 9;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -219,6 +231,8 @@
             this.bar1.DockCol = 0;
             this.bar1.DockRow = 1;
             this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.labelBangDangThaoTac)});
             this.bar1.Text = "Tools";
             // 
             // bar2
@@ -320,7 +334,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1683, 51);
+            this.barDockControlTop.Size = new System.Drawing.Size(1683, 57);
             // 
             // barDockControlBottom
             // 
@@ -334,17 +348,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 51);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 57);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 731);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 725);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1683, 51);
+            this.barDockControlRight.Location = new System.Drawing.Point(1683, 57);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 731);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 725);
             // 
             // barButtonItem1
             // 
@@ -381,7 +395,7 @@
             // 
             this.gc_PhatSinh.DataSource = this.bds_PhatSinh;
             this.gc_PhatSinh.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gc_PhatSinh.Location = new System.Drawing.Point(0, 51);
+            this.gc_PhatSinh.Location = new System.Drawing.Point(0, 57);
             this.gc_PhatSinh.MainView = this.gv_PhatSinh;
             this.gc_PhatSinh.MenuManager = this.barManager1;
             this.gc_PhatSinh.Name = "gc_PhatSinh";
@@ -400,6 +414,7 @@
             this.colHOTENKH,
             this.colMANV});
             this.gv_PhatSinh.GridControl = this.gc_PhatSinh;
+            this.gv_PhatSinh.GroupPanelText = "Phát sinh";
             this.gv_PhatSinh.Name = "gv_PhatSinh";
             this.gv_PhatSinh.Click += new System.EventHandler(this.gv_PhatSinh_Click);
             // 
@@ -489,13 +504,14 @@
             this.panel1.Controls.Add(this.gc_CTPhatSinh);
             this.panel1.Controls.Add(this.groupBoxPhatSinh);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 264);
+            this.panel1.Location = new System.Drawing.Point(0, 270);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1683, 518);
+            this.panel1.Size = new System.Drawing.Size(1683, 512);
             this.panel1.TabIndex = 11;
             // 
             // groupBoxCTPhatSinh
             // 
+            this.groupBoxCTPhatSinh.Controls.Add(this.buttonTimVatTu);
             this.groupBoxCTPhatSinh.Controls.Add(dONGIALabel);
             this.groupBoxCTPhatSinh.Controls.Add(this.textEdit_DonGia_CTPS);
             this.groupBoxCTPhatSinh.Controls.Add(sOLUONGLabel);
@@ -507,14 +523,25 @@
             this.groupBoxCTPhatSinh.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxCTPhatSinh.Location = new System.Drawing.Point(397, 220);
             this.groupBoxCTPhatSinh.Name = "groupBoxCTPhatSinh";
-            this.groupBoxCTPhatSinh.Size = new System.Drawing.Size(1286, 298);
+            this.groupBoxCTPhatSinh.Size = new System.Drawing.Size(1286, 292);
             this.groupBoxCTPhatSinh.TabIndex = 2;
             this.groupBoxCTPhatSinh.TabStop = false;
+            this.groupBoxCTPhatSinh.Enter += new System.EventHandler(this.groupBoxCTPhatSinh_Enter);
+            // 
+            // buttonTimVatTu
+            // 
+            this.buttonTimVatTu.Location = new System.Drawing.Point(783, 150);
+            this.buttonTimVatTu.Name = "buttonTimVatTu";
+            this.buttonTimVatTu.Size = new System.Drawing.Size(79, 32);
+            this.buttonTimVatTu.TabIndex = 8;
+            this.buttonTimVatTu.Text = "Tìm";
+            this.buttonTimVatTu.UseVisualStyleBackColor = true;
+            this.buttonTimVatTu.Click += new System.EventHandler(this.buttonTimVatTu_Click);
             // 
             // textEdit_DonGia_CTPS
             // 
             this.textEdit_DonGia_CTPS.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bds_CTPhatSinh, "DONGIA", true));
-            this.textEdit_DonGia_CTPS.Location = new System.Drawing.Point(1007, 56);
+            this.textEdit_DonGia_CTPS.Location = new System.Drawing.Point(1084, 56);
             this.textEdit_DonGia_CTPS.MenuManager = this.barManager1;
             this.textEdit_DonGia_CTPS.Name = "textEdit_DonGia_CTPS";
             this.textEdit_DonGia_CTPS.Size = new System.Drawing.Size(137, 22);
@@ -528,7 +555,7 @@
             // textEdit_SoLuong_CTPS
             // 
             this.textEdit_SoLuong_CTPS.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.bds_CTPhatSinh, "SOLUONG", true));
-            this.textEdit_SoLuong_CTPS.Location = new System.Drawing.Point(1007, 155);
+            this.textEdit_SoLuong_CTPS.Location = new System.Drawing.Point(1084, 155);
             this.textEdit_SoLuong_CTPS.MenuManager = this.barManager1;
             this.textEdit_SoLuong_CTPS.Name = "textEdit_SoLuong_CTPS";
             this.textEdit_SoLuong_CTPS.Size = new System.Drawing.Size(137, 22);
@@ -574,6 +601,7 @@
             this.colSOLUONG,
             this.colDONGIA});
             this.gv_CTPhatSinh.GridControl = this.gc_CTPhatSinh;
+            this.gv_CTPhatSinh.GroupPanelText = "Chi tiết phát sinh";
             this.gv_CTPhatSinh.Name = "gv_CTPhatSinh";
             // 
             // colPHIEU1
@@ -655,9 +683,18 @@
             this.groupBoxPhatSinh.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBoxPhatSinh.Location = new System.Drawing.Point(0, 0);
             this.groupBoxPhatSinh.Name = "groupBoxPhatSinh";
-            this.groupBoxPhatSinh.Size = new System.Drawing.Size(397, 518);
+            this.groupBoxPhatSinh.Size = new System.Drawing.Size(397, 512);
             this.groupBoxPhatSinh.TabIndex = 0;
             this.groupBoxPhatSinh.TabStop = false;
+            // 
+            // cmb_Loai_PS
+            // 
+            this.cmb_Loai_PS.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bds_PhatSinh, "LOAI", true));
+            this.cmb_Loai_PS.FormattingEnabled = true;
+            this.cmb_Loai_PS.Location = new System.Drawing.Point(201, 212);
+            this.cmb_Loai_PS.Name = "cmb_Loai_PS";
+            this.cmb_Loai_PS.Size = new System.Drawing.Size(148, 24);
+            this.cmb_Loai_PS.TabIndex = 10;
             // 
             // textEdit_MaNV_PS
             // 
@@ -704,23 +741,12 @@
             // 
             this.cT_PhatSinhTableAdapter.ClearBeforeFill = true;
             // 
-            // lOAILabel
+            // labelBangDangThaoTac
             // 
-            lOAILabel.AutoSize = true;
-            lOAILabel.Location = new System.Drawing.Point(41, 215);
-            lOAILabel.Name = "lOAILabel";
-            lOAILabel.Size = new System.Drawing.Size(39, 17);
-            lOAILabel.TabIndex = 9;
-            lOAILabel.Text = "Loại:";
-            // 
-            // cmb_Loai_PS
-            // 
-            this.cmb_Loai_PS.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bds_PhatSinh, "LOAI", true));
-            this.cmb_Loai_PS.FormattingEnabled = true;
-            this.cmb_Loai_PS.Location = new System.Drawing.Point(201, 212);
-            this.cmb_Loai_PS.Name = "cmb_Loai_PS";
-            this.cmb_Loai_PS.Size = new System.Drawing.Size(148, 24);
-            this.cmb_Loai_PS.TabIndex = 10;
+            this.labelBangDangThaoTac.Caption = "Đang thao tác bảng: PHÁT SINH.";
+            this.labelBangDangThaoTac.Id = 8;
+            this.labelBangDangThaoTac.Name = "labelBangDangThaoTac";
+            this.labelBangDangThaoTac.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItem1_ItemClick);
             // 
             // frmLapPhieu
             // 
@@ -803,7 +829,6 @@
         private System.Windows.Forms.GroupBox groupBoxCTPhatSinh;
         private DevExpress.XtraEditors.TextEdit textEdit_DonGia_CTPS;
         private DevExpress.XtraEditors.TextEdit textEdit_SoLuong_CTPS;
-        private DevExpress.XtraEditors.TextEdit textEdit_MaVT_CTPS;
         private DevExpress.XtraEditors.TextEdit textEdit_Phieu_CTPS;
         private DevExpress.XtraEditors.TextEdit textEdit_MaNV_PS;
         private DevExpress.XtraEditors.TextEdit textEdit_HoTenKH_PS;
@@ -812,5 +837,8 @@
         private DevExpress.XtraBars.BarButtonItem buttonRefresh;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.ComboBox cmb_Loai_PS;
+        private System.Windows.Forms.Button buttonTimVatTu;
+        public DevExpress.XtraEditors.TextEdit textEdit_MaVT_CTPS;
+        private DevExpress.XtraBars.BarStaticItem labelBangDangThaoTac;
     }
 }

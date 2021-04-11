@@ -99,3 +99,4 @@ E:\Git\ChuyenDeCNPMProject\QuanLyVatTuChuyenDeCNPM\QuanLyVatTuChuyenDeCNPM\obj\D
 E:\Git\ChuyenDeCNPMProject\QuanLyVatTuChuyenDeCNPM\QuanLyVatTuChuyenDeCNPM\obj\Debug\QuanLyVatTuChuyenDeCNPM.exe
 E:\Git\ChuyenDeCNPMProject\QuanLyVatTuChuyenDeCNPM\QuanLyVatTuChuyenDeCNPM\obj\Debug\QuanLyVatTuChuyenDeCNPM.pdb
 E:\Git\ChuyenDeCNPMProject\QuanLyVatTuChuyenDeCNPM\QuanLyVatTuChuyenDeCNPM\obj\Debug\QuanLyVatTuChuyenDeCNPM.frmVatTu.resources
+E:\Git\ChuyenDeCNPMProject\QuanLyVatTuChuyenDeCNPM\QuanLyVatTuChuyenDeCNPM\obj\Debug\QuanLyVatTuChuyenDeCNPM.frmTimVatTu.resources

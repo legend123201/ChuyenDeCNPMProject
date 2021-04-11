@@ -345,6 +345,7 @@
             this.colDVT,
             this.colSOLUONGTON});
             this.gridView1.GridControl = this.gc_VatTu;
+            this.gridView1.GroupPanelText = "Vật tư";
             this.gridView1.Name = "gridView1";
             // 
             // colMAVT

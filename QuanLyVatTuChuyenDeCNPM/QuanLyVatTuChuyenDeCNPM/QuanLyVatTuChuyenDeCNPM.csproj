@@ -78,6 +78,12 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTimVatTu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTimVatTu.Designer.cs">
+      <DependentUpon>frmTimVatTu.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmVatTu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,6 +100,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTimVatTu.resx">
+      <DependentUpon>frmTimVatTu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmVatTu.resx">
       <DependentUpon>frmVatTu.cs</DependentUpon>

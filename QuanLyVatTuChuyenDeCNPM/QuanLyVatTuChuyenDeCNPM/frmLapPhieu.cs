@@ -63,13 +63,14 @@ namespace QuanLyVatTuChuyenDeCNPM
         {
             //MessageBox.Show("bạn đã click", "", MessageBoxButtons.OK);
             isFocusOnTablePhatSinh = true;
-
+            labelBangDangThaoTac.Caption = "Đang thao tác bảng: PHÁT SINH.";
         }
 
         private void gc_CTPhatSinh_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("bạn đã click", "", MessageBoxButtons.OK);
             isFocusOnTablePhatSinh = false;
+            labelBangDangThaoTac.Caption = "Đang thao tác bảng: CHI TIẾT PHÁT SINH.";
         }
 
         private void gv_PhatSinh_Click(object sender, EventArgs e)
@@ -114,6 +115,10 @@ namespace QuanLyVatTuChuyenDeCNPM
                         return;
                     }
                 }
+
+                //xoá xong thì nó sẽ chỉ vào dòng khác, vậy chúng ta cần filter lại bảng chi tiết phát sinh
+                string phieu = gv_PhatSinh.GetRowCellValue(gv_PhatSinh.FocusedRowHandle, "PHIEU").ToString().Trim();
+                this.bds_CTPhatSinh.Filter = "PHIEU = '" + phieu + "'";
             }
             else
             {
@@ -171,6 +176,7 @@ namespace QuanLyVatTuChuyenDeCNPM
                 }
 
                 textEdit_MaVT_CTPS.Enabled = false;
+                buttonTimVatTu.Enabled = false;
 
                 textEdit_DonGia_CTPS.Text = textEdit_DonGia_CTPS.Text.Trim();
                 textEdit_SoLuong_CTPS.Text = textEdit_SoLuong_CTPS.Text.Trim();
@@ -218,6 +224,13 @@ namespace QuanLyVatTuChuyenDeCNPM
                         // TODO: This line of code loads data into the 'dS.PhatSinh' table. You can move, or remove it, as needed.
                         this.phatSinhTableAdapter.Connection.ConnectionString = Program.connstr;
                         this.phatSinhTableAdapter.Fill(this.dS.PhatSinh);
+
+                        //lọc bảng chi tiết phát sinh lại vì nó tự quay về dòng đầu sau khi fill
+                        if (bds_PhatSinh.Count != 0)
+                        {
+                            string phieu = ((DataRowView)bds_PhatSinh[0])["PHIEU"].ToString();
+                            this.bds_CTPhatSinh.Filter = "PHIEU = '" + phieu + "'";
+                        }
                     }
                 }
                 catch (Exception ex)
@@ -225,6 +238,10 @@ namespace QuanLyVatTuChuyenDeCNPM
                     MessageBox.Show("Thao tác huỷ bị lỗi!\n" + ex.Message, "THÔNG BÁO", MessageBoxButtons.OK);
                     return;
                 }
+
+                //làm hành động giả thế này để nó focus vào bảng phát sinh và làm sáng row đang chọn, chứ gc_PhatSinh.Focus() và gv_PhatSinh.Focus() ko có tác dụng
+                gc_PhatSinh.Enabled = false;
+                gc_PhatSinh.Enabled = true;
             }
             else
             {
@@ -251,6 +268,9 @@ namespace QuanLyVatTuChuyenDeCNPM
                     MessageBox.Show("Thao tác huỷ bị lỗi!\n" + ex.Message, "THÔNG BÁO", MessageBoxButtons.OK);
                     return;
                 }
+                //làm hành động giả thế này để nó focus vào bảng chi tiết phát sinh và làm sáng row đang chọn, chứ gc_CTPhatSinh.Focus() và gv_CTPhatSinh.Focus() ko có tác dụng
+                gc_CTPhatSinh.Enabled = false;
+                gc_CTPhatSinh.Enabled = true;
             }
             isDangThem = isDangSua = false;
 
@@ -332,6 +352,10 @@ namespace QuanLyVatTuChuyenDeCNPM
                 //nếu thêm thành công ở bảng phát sinh, thì phải filter bảng chi tiết phát sinh lại
                 string phieu = gv_PhatSinh.GetRowCellValue(gv_PhatSinh.FocusedRowHandle, "PHIEU").ToString().Trim();
                 this.bds_CTPhatSinh.Filter = "PHIEU = '" + phieu + "'";
+
+                //làm hành động giả thế này để nó focus vào bảng phát sinh và làm sáng row đang chọn, chứ gc_PhatSinh.Focus() và gv_PhatSinh.Focus() ko có tác dụng
+                gc_PhatSinh.Enabled = false;
+                gc_PhatSinh.Enabled = true;
             }
             else
             {
@@ -451,6 +475,10 @@ namespace QuanLyVatTuChuyenDeCNPM
                     MessageBox.Show("Thao tác không thành công! Đã có lỗi xảy ra!\n" + ex.Message, "Thông báo", MessageBoxButtons.OK);
                     return;
                 }
+
+                //làm hành động giả thế này để nó focus vào bảng chi tiết phát sinh và làm sáng row đang chọn, chứ gc_CTPhatSinh.Focus() và gv_CTPhatSinh.Focus() ko có tác dụng
+                gc_CTPhatSinh.Enabled = false;
+                gc_CTPhatSinh.Enabled = true;
             }
 
             groupBoxPhatSinh.Enabled = groupBoxCTPhatSinh.Enabled = false;
@@ -462,7 +490,21 @@ namespace QuanLyVatTuChuyenDeCNPM
             isDangThem = isDangSua = false;
         }
 
-   
+        private void groupBoxCTPhatSinh_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTimVatTu_Click(object sender, EventArgs e)
+        {
+            frmTimVatTu f = new frmTimVatTu();
+            f.Show();
+        }
+
+        private void barStaticItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
 
         private void buttonThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -502,6 +544,7 @@ namespace QuanLyVatTuChuyenDeCNPM
 
                     //textEdit_MaVT_CTPS.Focus(); 
                     textEdit_MaVT_CTPS.Enabled = true;
+                    buttonTimVatTu.Enabled = true;
 
                     textEdit_Phieu_CTPS.Text = gv_PhatSinh.GetRowCellValue(gv_PhatSinh.FocusedRowHandle, "PHIEU").ToString().Trim(); ;
                 }
