@@ -75,6 +75,10 @@ namespace QuanLyVatTuChuyenDeCNPM
 
         private void gv_PhatSinh_Click(object sender, EventArgs e)
         {
+            if (bds_PhatSinh.Count == 0)
+            {
+                return;
+            }
             // TODO: This line of code loads data into the 'dS.CT_PhatSinh' table. You can move, or remove it, as needed.
             this.cT_PhatSinhTableAdapter.Connection.ConnectionString = Program.connstr;
             this.cT_PhatSinhTableAdapter.Fill(this.dS.CT_PhatSinh);
@@ -117,12 +121,16 @@ namespace QuanLyVatTuChuyenDeCNPM
                 }
 
                 //xoá xong thì nó sẽ chỉ vào dòng khác, vậy chúng ta cần filter lại bảng chi tiết phát sinh
-                string phieu = gv_PhatSinh.GetRowCellValue(gv_PhatSinh.FocusedRowHandle, "PHIEU").ToString().Trim();
-                this.bds_CTPhatSinh.Filter = "PHIEU = '" + phieu + "'";
+                if (bds_PhatSinh.Count != 0)
+                {
+                    string phieu = gv_PhatSinh.GetRowCellValue(gv_PhatSinh.FocusedRowHandle, "PHIEU").ToString().Trim();
+                    this.bds_CTPhatSinh.Filter = "PHIEU = '" + phieu + "'";
+                }
             }
             else
             {
                 //nếu đang focus bảng chi tiết phát sinh
+
                 //ktra lỗi
                 if (bds_CTPhatSinh.Count == 0)
                 {
@@ -142,10 +150,27 @@ namespace QuanLyVatTuChuyenDeCNPM
                     {
                         MessageBox.Show("Thao tác xoá bị lỗi!\n" + ex.Message, "THÔNG BÁO", MessageBoxButtons.OK);
                     }
+
+                    //xoá xong thì fill lại data bên frm vật tư
+                    //khi mà chưa mở frm vật tư nó sẽ bị lỗi là null
+                    if(Program.frmChinh.frm_VatTu != null)
+                    {
+                        Program.frmChinh.frm_VatTu.Refresh_Fill_Data();
+                    } 
                 }
+                //xoá lỗi thì fill lại cái dòng vừa bị remove current (sql thì nó ko xoá nhưng bds trên app thì nó vẫn xoá)
+                LoadLaiCT_PhatSinh();
             }
         }
-
+        private void LoadLaiCT_PhatSinh()
+        {            
+            // TODO: This line of code loads data into the 'dS.CT_PhatSinh' table. You can move, or remove it, as needed.
+            this.cT_PhatSinhTableAdapter.Connection.ConnectionString = Program.connstr;
+            this.cT_PhatSinhTableAdapter.Fill(this.dS.CT_PhatSinh);
+            string phieu = gv_PhatSinh.GetRowCellValue(gv_PhatSinh.FocusedRowHandle, "PHIEU").ToString().Trim();
+            this.bds_CTPhatSinh.Filter = "PHIEU = '" + phieu + "'";
+        }
+            
         private void buttonSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             isDangSua = true;
@@ -473,7 +498,15 @@ namespace QuanLyVatTuChuyenDeCNPM
                 catch (Exception ex)
                 {
                     MessageBox.Show("Thao tác không thành công! Đã có lỗi xảy ra!\n" + ex.Message, "Thông báo", MessageBoxButtons.OK);
+                    LoadLaiCT_PhatSinh();
                     return;
+                }
+
+                //khi mà chưa mở frm vật tư nó sẽ bị lỗi là null
+                if (Program.frmChinh.frm_VatTu != null)
+                {
+                    //thêm hoặc sửa xong thì fill lại data bên frm vật tư
+                    Program.frmChinh.frm_VatTu.Refresh_Fill_Data();
                 }
 
                 //làm hành động giả thế này để nó focus vào bảng chi tiết phát sinh và làm sáng row đang chọn, chứ gc_CTPhatSinh.Focus() và gv_CTPhatSinh.Focus() ko có tác dụng

@@ -29,7 +29,6 @@ namespace QuanLyVatTuChuyenDeCNPM
         public static frmMain frmChinh = null;
 
         public static BindingSource bds_dspm = new BindingSource();  // giữ bdsPM khi đăng nhập
-        //public static frmMain frmChinh;
 
         public static int KetNoi()
         {

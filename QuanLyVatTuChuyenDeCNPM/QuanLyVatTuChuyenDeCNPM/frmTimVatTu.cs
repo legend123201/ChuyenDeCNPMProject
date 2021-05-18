@@ -13,6 +13,7 @@ namespace QuanLyVatTuChuyenDeCNPM
     public partial class frmTimVatTu : Form
     {
         string maVTCurrent;
+        Boolean focusNgoaiFormHopLe = false; //biến này sẽ giải thích bên dưới
         public frmTimVatTu()
         {
             InitializeComponent();
@@ -34,13 +35,20 @@ namespace QuanLyVatTuChuyenDeCNPM
             this.vatTuTableAdapter.Fill(this.dS.VatTu);
 
             maVTCurrent = "";
+            //mới vào thì cái bảng tự focus vào dòng đầu tiên nên mình set luôn maVTCurrent là maVT của cái dòng đầu tiên
+            if (bds_VatTu.Count != 0)
+            {
+                maVTCurrent = ((DataRowView)bds_VatTu[0])["MAVT"].ToString();
+            }
         }
 
         private void buttonXacNhan_Click(object sender, EventArgs e)
-        {
+        { 
             if (maVTCurrent == "")
             {
+                focusNgoaiFormHopLe = true; //cái meesage box này hiện lên thì cái hàm frmTimVatTu_Deactivate cũng sẽ chạy, như vậy là ko đc, vậy đây chính là trường hợp focus ngoài form nhưng ko close form
                 MessageBox.Show("Bạn chưa chọn vật tư!", "Thông báo", MessageBoxButtons.OK);
+                focusNgoaiFormHopLe = false;
                 return;
             }
             Program.frmChinh.frm_LapPhieu.textEdit_MaVT_CTPS.Text = maVTCurrent;
@@ -56,6 +64,14 @@ namespace QuanLyVatTuChuyenDeCNPM
         private void gv_VatTu_Click(object sender, EventArgs e)
         {
             maVTCurrent = gv_VatTu.GetRowCellValue(gv_VatTu.FocusedRowHandle, "MAVT").ToString().Trim();
+        }
+
+        private void frmTimVatTu_Deactivate(object sender, EventArgs e)
+        {
+            if (!focusNgoaiFormHopLe)
+            {
+                this.Close();
+            } 
         }
     }
 }

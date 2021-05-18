@@ -186,7 +186,7 @@ namespace QuanLyVatTuChuyenDeCNPM
             buttonThem.Enabled = buttonXoa.Enabled = buttonSua.Enabled = buttonThoat.Enabled = buttonRefresh.Enabled = false;
         }
 
-        private void buttonRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        public void Refresh_Fill_Data()
         {
             // TODO: This line of code loads data into the 'dS.VatTu' table. You can move, or remove it, as needed.
             this.vatTuTableAdapter.Connection.ConnectionString = Program.connstr;
@@ -194,6 +194,10 @@ namespace QuanLyVatTuChuyenDeCNPM
             // TODO: This line of code loads data into the 'dS.CT_PhatSinh' table. You can move, or remove it, as needed.
             this.cT_PhatSinhTableAdapter.Connection.ConnectionString = Program.connstr;
             this.cT_PhatSinhTableAdapter.Fill(this.dS.CT_PhatSinh);
+        }
+        private void buttonRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Refresh_Fill_Data();
         }
 
         private void buttonHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

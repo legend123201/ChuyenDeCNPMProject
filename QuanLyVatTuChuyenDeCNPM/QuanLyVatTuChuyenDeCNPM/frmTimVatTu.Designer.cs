@@ -35,13 +35,13 @@
             this.tableAdapterManager = new QuanLyVatTuChuyenDeCNPM.DSTableAdapters.TableAdapterManager();
             this.gc_VatTu = new DevExpress.XtraGrid.GridControl();
             this.gv_VatTu = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.buttonHuy = new System.Windows.Forms.Button();
-            this.buttonXacNhan = new System.Windows.Forms.Button();
             this.colMAVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTENVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDVT = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSOLUONGTON = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.buttonXacNhan = new System.Windows.Forms.Button();
+            this.buttonHuy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bds_VatTu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gc_VatTu)).BeginInit();
@@ -95,37 +95,6 @@
             this.gv_VatTu.GroupPanelText = "Vật tư";
             this.gv_VatTu.Name = "gv_VatTu";
             this.gv_VatTu.Click += new System.EventHandler(this.gv_VatTu_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.buttonXacNhan);
-            this.groupBox1.Controls.Add(this.buttonHuy);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 374);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(895, 143);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            // 
-            // buttonHuy
-            // 
-            this.buttonHuy.Location = new System.Drawing.Point(234, 63);
-            this.buttonHuy.Name = "buttonHuy";
-            this.buttonHuy.Size = new System.Drawing.Size(112, 41);
-            this.buttonHuy.TabIndex = 0;
-            this.buttonHuy.Text = "Huỷ";
-            this.buttonHuy.UseVisualStyleBackColor = true;
-            this.buttonHuy.Click += new System.EventHandler(this.buttonHuy_Click);
-            // 
-            // buttonXacNhan
-            // 
-            this.buttonXacNhan.Location = new System.Drawing.Point(616, 63);
-            this.buttonXacNhan.Name = "buttonXacNhan";
-            this.buttonXacNhan.Size = new System.Drawing.Size(112, 41);
-            this.buttonXacNhan.TabIndex = 1;
-            this.buttonXacNhan.Text = "Xác nhận";
-            this.buttonXacNhan.UseVisualStyleBackColor = true;
-            this.buttonXacNhan.Click += new System.EventHandler(this.buttonXacNhan_Click);
             // 
             // colMAVT
             // 
@@ -191,6 +160,37 @@
             this.colSOLUONGTON.VisibleIndex = 3;
             this.colSOLUONGTON.Width = 94;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.buttonXacNhan);
+            this.groupBox1.Controls.Add(this.buttonHuy);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 374);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(895, 143);
+            this.groupBox1.TabIndex = 2;
+            this.groupBox1.TabStop = false;
+            // 
+            // buttonXacNhan
+            // 
+            this.buttonXacNhan.Location = new System.Drawing.Point(616, 63);
+            this.buttonXacNhan.Name = "buttonXacNhan";
+            this.buttonXacNhan.Size = new System.Drawing.Size(112, 41);
+            this.buttonXacNhan.TabIndex = 1;
+            this.buttonXacNhan.Text = "Xác nhận";
+            this.buttonXacNhan.UseVisualStyleBackColor = true;
+            this.buttonXacNhan.Click += new System.EventHandler(this.buttonXacNhan_Click);
+            // 
+            // buttonHuy
+            // 
+            this.buttonHuy.Location = new System.Drawing.Point(234, 63);
+            this.buttonHuy.Name = "buttonHuy";
+            this.buttonHuy.Size = new System.Drawing.Size(112, 41);
+            this.buttonHuy.TabIndex = 0;
+            this.buttonHuy.Text = "Huỷ";
+            this.buttonHuy.UseVisualStyleBackColor = true;
+            this.buttonHuy.Click += new System.EventHandler(this.buttonHuy_Click);
+            // 
             // frmTimVatTu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -200,6 +200,7 @@
             this.Controls.Add(this.gc_VatTu);
             this.Name = "frmTimVatTu";
             this.Text = "frmTimVatTu";
+            this.Deactivate += new System.EventHandler(this.frmTimVatTu_Deactivate);
             this.Load += new System.EventHandler(this.frmTimVatTu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bds_VatTu)).EndInit();

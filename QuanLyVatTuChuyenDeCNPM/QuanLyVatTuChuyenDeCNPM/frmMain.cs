@@ -12,7 +12,7 @@ namespace QuanLyVatTuChuyenDeCNPM
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public frmLapPhieu frm_LapPhieu = null;
-       
+        public frmVatTu frm_VatTu = null;
         public frmMain()
         {
             InitializeComponent();
@@ -64,9 +64,9 @@ namespace QuanLyVatTuChuyenDeCNPM
                 frm.Activate();
             else
             {
-                frmVatTu f = new frmVatTu();
-                f.MdiParent = this;
-                f.Show();
+                frm_VatTu = new frmVatTu();
+                frm_VatTu.MdiParent = this;
+                frm_VatTu.Show();
             }
         }
     }

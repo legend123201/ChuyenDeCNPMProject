@@ -91,6 +91,7 @@
             // 
             this.textEditMatKhau.Location = new System.Drawing.Point(198, 136);
             this.textEditMatKhau.Name = "textEditMatKhau";
+            this.textEditMatKhau.Properties.UseSystemPasswordChar = true;
             this.textEditMatKhau.Size = new System.Drawing.Size(240, 22);
             this.textEditMatKhau.TabIndex = 4;
             // 

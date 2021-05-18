@@ -27,7 +27,7 @@ namespace QuanLyVatTuChuyenDeCNPM
 
         private void frmDangNhap_Load(object sender, EventArgs e)
         {
-            
+    
         }
 
         private void buttonDangNhap_Click(object sender, EventArgs e)
